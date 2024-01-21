@@ -7,10 +7,15 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 public class MainActivity extends AppCompatActivity {
 
     private int counter = 0;
     private TextView counterTextView;
+    private MaterialButton incrementButton, decrementButton;
+    private FloatingActionButton resetButton;
 
 
     @Override
@@ -19,9 +24,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         counterTextView = findViewById(R.id.counterTextView);
-
-        Button incrementButton = findViewById(R.id.incrementButton);
-        Button decrementButton = findViewById(R.id.decrementButton);
+        incrementButton = findViewById(R.id.incrementButton);
+        decrementButton = findViewById(R.id.decrementButton);
+        resetButton = findViewById(R.id.fab);
 
 
         incrementButton.setOnClickListener(new View.OnClickListener() {
@@ -36,6 +41,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 counter--;
+                updateCounter();
+            }
+        });
+
+        resetButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                counter = 0;
                 updateCounter();
             }
         });
